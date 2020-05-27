@@ -1,0 +1,141 @@
+﻿@model IEnumerable<MovieWeb.Data.Entities.Movie>
+
+@{
+    ViewData["Title"] = "Movies";
+}
+
+
+<h2 class="bg-dark text-white text-center p-3">Movie List</h2>
+<div>
+    @*@if (ViewContext.HttpContext.User.IsInRole("admin"))
+        {*@
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <a asp-action="Create" class="btn btn-success m-3" style="float:right">
+                <i class="fas fa-plus"></i> Create
+            </a>
+        </div>
+    </div>
+    @*}*@
+</div>
+<div class="container-fluid">
+    <table id="movieDataTable" class="table table-striped row-border" style="width:100%">
+        <thead class="thead-dark">
+            <tr>
+                <th> Movie Poster </th>
+                <th> Movie Title </th>
+                <th> Rating </th>
+                <th> Genres </th>
+                <th> Director </th>
+                <th> Writer </th>
+                <th> Actors </th>
+                <th> Price </th>
+                <th> Actions </th>
+            </tr>
+        </thead>
+    </table>
+
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#movieDataTable').DataTable({
+                ajax: {
+                    url: '/api/MoviesApi',
+                    dataSrc: ''
+                },
+                columns:
+                    [
+                        {
+                            data: "moviePosterURL",
+                            render: function (data) {
+                                return '<img src="/images/' + data + '" width="140px" />';
+                            }
+                        },
+                        {
+                            data: null,
+                            render: function (data) {
+                                var num = data.runtime;
+                                var hours = (num / 60);
+                                var rhours = Math.floor(hours);
+                                var minutes = (hours - rhours) * 60;
+                                var rminutes = Math.round(minutes);
+
+                                return '<h5>' + data.movieTitle + ' (' + moment(data.releaseDate).format("YYYY") + ')' + '</h5>' +
+                                    '<a href="' + data.imdbLink + '" class="imdb-logo">IMDb</a>' +
+                                    '<br />' +
+                                    '<br />' +
+                                    '<h6>Runtime</h6>' +
+                                    '<p>' + rhours + "h " + rminutes + "min." + '</p>';
+                            }
+                        },
+                        {
+                            data: "movieRating",
+                            autoWidth: true
+                        },
+                        {
+                            "data": "genres",
+                            render: function (data) {
+                                var list = "";
+                                for (var i = 0; i < data.length; i++) {
+                                    list += "<p>" + data[i] + "</p>";
+                                }
+                                return list;
+                            }
+                        },
+                        {
+                            "data": "directors",
+                            render: function (data) {
+                                var list = "";
+                                for (var i = 0; i < data.length; i++) {
+                                    list += "<p>" + data[i].personName + "</p>";
+                                }
+                                return list;
+                            }
+                        },
+                        {
+                            "data": "writers",
+                            render: function (data) {
+                                var list = "";
+                                for (var i = 0; i < data.length; i++) {
+                                    list += "<p>" + data[i].personName + "</p>";
+                                }
+                                return list;
+                            }
+                        },
+                        {
+                            "data": "actors",
+                            render: function (data) {
+                                var list = "";
+                                for (var i = 0; i < data.length; i++) {
+                                    list += "<p>" + data[i].personName + "</p>";
+                                }
+                                return list;
+                            }
+                        },
+                        {
+                            "data": "moviePrice",
+                            render: function (data) {
+                                return data + " &euro;";
+                            }
+                        },
+                        {
+                           data: 'id',
+                           render: function (data) {
+                                   var editUrl = '@Url.Action("Edit", "Movies")/' + data;
+                                   var detailsUrl = '@Url.Action("Details", "Movies")/' + data;
+                                   var deleteUrl = '@Url.Action("Delete", "Movies")/' + data;
+                                   return '<a href="' + editUrl +'"class="table-action-btn btn btn-block btn-primary"><i class="fas fa-edit"></i> &nbsp; Edit</a>' +
+                                           '<a  href="'+ detailsUrl +'"class="table-action-btn btn btn-block btn-info"><i class="fas fa-info-circle"></i> &nbsp;Details</a>' +
+                                           '<a href="'+ deleteUrl +'"class="table-action-btn btn btn-block btn-danger"><i class="fas fa-trash-alt"></i> &nbsp; Delete </a>';
+                               },
+                           width: "150px"
+                       }
+                    ]
+            });
+        });
+    </script>
+}
+
+

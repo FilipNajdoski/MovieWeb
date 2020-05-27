@@ -1,0 +1,28 @@
+﻿@model MovieWeb.Data.Entities.Genre
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container">
+    <h4>Are you sure you want to delete this?</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <div class="d-flex justify-content-between">
+                <div class="font-weight-bold">
+                    @Html.DisplayNameFor(model => model.GenreName)
+                </div>
+                <div>
+                    @Html.DisplayFor(model => model.GenreName)
+                </div>
+            </div>
+            <hr />
+            <form asp-action="Delete" class="d-flex justify-content-between">
+                <input type="hidden" asp-for="GenreID" />
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                <a asp-action="Index" class="btn btn-success"><i class="fas fa-arrow-alt-circle-left"></i>Back to List</a>
+            </form>
+        </div>
+    </div>
+</div>

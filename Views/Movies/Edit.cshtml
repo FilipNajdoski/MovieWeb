@@ -1,0 +1,177 @@
+﻿@model MovieWeb.Models.MovieViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2 class="bg-dark text-white text-center p-3">Edit Movie</h2>
+<br />
+<br />
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center ">
+
+            <div class="row">
+                <div class="form-group col-12">
+                    <label class="label-font-size la"> Upload Photo - Movie Poster</label>
+                    <br />
+                    <div class="row">
+                        <div class="offset-4 col-4">
+                            <input type="file" #file accept="image/*" id="photoUpload" class="form-control text-center bg-transparent border-0" />
+                            <br />
+                            <button class="btn btn-outline-secondary btn-block" id="uploadphoto">Upload Photo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form asp-action="Edit">
+                <input asp-for="ID" hidden />
+                <div class="row ">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="MovieTitle" class="control-label label-font-size"></label>
+                            <input asp-for="MovieTitle" class="form-control input-shadow-box" />
+                            <span asp-validation-for="MovieTitle" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class=" col-md-6">
+                        <div class="form-group">
+                            <label asp-for="IMDBLink" class="control-label label-font-size"></label>
+                            <input asp-for="IMDBLink" class="form-control input-shadow-box" />
+                            <span asp-validation-for="IMDBLink" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="Summary" class="control-label label-font-size"></label>
+                            <textarea asp-for="Summary" class="form-control input-shadow-box" rows="3"></textarea>
+                            <span asp-validation-for="Summary" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label asp-for="ReleaseDate" class="control-label label-font-size"></label>
+                            <input asp-for="ReleaseDate" class="form-control input-shadow-box" />
+                            <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label asp-for="Runtime" class="control-label label-font-size"></label>
+                            <input asp-for="Runtime" class="form-control input-shadow-box" />
+                            <span asp-validation-for="Runtime" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label asp-for="MovieRating" class="control-label label-font-size"></label>
+                            <input asp-for="MovieRating" class="form-control input-shadow-box" />
+                            <span asp-validation-for="MovieRating" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label asp-for="MoviePrice" class="control-label label-font-size"></label>
+                            <input asp-for="MoviePrice" class="form-control input-shadow-box" required />
+                            <span asp-validation-for="MoviePrice" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <input asp-for="MoviePosterURL" hidden />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Genres" class="control-label label-font-size"></label>
+                            @Html.ListBoxFor(x => x.SelectedGenresID, new MultiSelectList(Model.Genres, "Value", "Text", Model.SelectedGenresID),
+                          @htmlAttributes: new { @class = "form-control", id = "genres" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="People" class="control-label label-font-size">Directors</label>
+                            @Html.ListBoxFor(x => x.SelectedDirectorsID, new MultiSelectList(Model.People, "Value", "Text", Model.SelectedDirectorsID),
+                          @htmlAttributes: new { @class = "form-control", id = "directors" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="People" class="control-label label-font-size">Writers</label>
+                            @Html.ListBoxFor(x => x.SelectedWritersID, new MultiSelectList(Model.People, "Value", "Text", Model.SelectedWritersID),
+                          @htmlAttributes: new { @class = "form-control", id = "writers" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="People" class="control-label label-font-size">Actors</label>
+                            @Html.ListBoxFor(x => x.SelectedActorsID, new MultiSelectList(Model.People, "Value", "Text", Model.SelectedActorsID),
+                           @htmlAttributes: new { @class = "form-control", id = "actors" })
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="offset-md-3 col-md-6">
+                        <div class="form-group">
+                            <input type="submit" value="Edit" class="btn btn-primary btn-block" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<hr />
+<div class="container">
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            $("#genres").select2();
+            $("#directors").select2();
+            $("#writers").select2();
+            $("#actors").select2();
+            $(".select2-selection").addClass("input-shadow-box");
+            $("#uploadphoto").click(function () {
+                //console.log("upload button click !!!");
+                var data = new FormData();
+                var files = $("#photoUpload").get(0).files;
+                if (files.length > 0) {
+                    data.append("UploadedImage", files[0]);
+                    console.log(data);
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "/Movies/UploadPhoto",
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: function (data) {
+                        console.log(data.dbPath);
+                        $("#MoviePosterURL").val(data.dbPath);
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                });
+            });
+
+        });
+    </script>
+}
+

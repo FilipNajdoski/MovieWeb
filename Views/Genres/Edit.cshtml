@@ -1,0 +1,37 @@
+﻿@model MovieWeb.Data.Entities.Genre
+
+@{
+    ViewData["Title"] = "Edit";
+}
+    <div class="container">
+        <h4>Edit Genre</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="GenreID" />
+                    <div class="form-group">
+                        <label asp-for="GenreName" class="control-label font-weight-bold"></label>
+                        <input asp-for="GenreName" class="form-control" />
+                        <span asp-validation-for="GenreName" class="text-danger"></span>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                        <div>
+                            <a asp-action="Index" class="btn btn-success"><i class="fas fa-arrow-alt-circle-left"></i>Back to List</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        
+    </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

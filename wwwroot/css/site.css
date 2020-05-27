@@ -1,0 +1,398 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+nav {
+    border-bottom: 1px solid rgba(255,255,255,0.8)
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+/*  Custom CSS 
+    ----------------------------------------------*/
+
+.imdb-logo {
+    font: 1em Impact, HelveticaNeue-CondensedBold, sans-serif;
+    color: #000;
+    text-shadow: 0 0 0.15em #fff;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: bottom;
+    padding: 0.25em 0.35em;
+    border-radius: 0.15em;
+    background: radial-gradient(#ffffb8, #ce981d);
+}
+
+    .imdb-logo:hover {
+        text-decoration: none;
+        color: #000;
+        background: radial-gradient(#ffffeb, #e3b03b);
+    }
+
+.carousel-item {
+    margin: 0 auto
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+body {
+    min-height: 150vh;
+    background: url("../images/BodyBackground.jpeg");
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+    padding-top: 15vh;
+}
+
+    body .body-mask {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(255,255,255,.8);
+        z-index: -1;
+    }
+
+
+.section-title {
+    font-size: 3rem;
+    font-family: fantasy,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 1rem 0;
+    border-bottom: 1px solid black;
+    width: 50%;
+    margin: 1rem auto;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: lightgray;
+}
+
+.page-item.disabled .page-link {
+    color: white;
+    background-color: lightgray;
+}
+/*
+    Custom Card
+    _________________________________________
+*/
+.card {
+    border-radius: 5px;
+    background-color: #000;
+    width: 13.15rem;
+    height: 20rem;
+    margin: 0.5%;
+}
+
+
+.card-body {
+    visibility: hidden;
+    margin-top: -1.5rem;
+}
+
+    .card-body .card-title {
+        text-align: center;
+        color: wheat;
+    }
+
+    .card-body p {
+        font-size: .7rem;
+        color: #fff;
+    }
+
+.card-detail-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    color: gray;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.movie-card-img {
+    height: 10rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+    .movie-card-img img {
+        height: 19.8rem;
+        border-radius: 5px;
+    }
+
+.mask-img {
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0, 0, 0, 1)), color-stop(0.35, rgba(0, 0, 0, 1)), color-stop(0.5, rgba(0, 0, 0, 1)), color-stop(0.65, rgba(0, 0, 0, 1)), color-stop(0.85, rgba(0, 0, 0, 0.6)), color-stop(1, rgba(0, 0, 0, 0)));
+}
+
+.mask-body {
+    visibility: visible;
+}
+
+.card-btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 0 0 5px 5px;
+}
+
+    .card-btn-container button {
+        width: 40px;
+        background-color: transparent;
+        color: lightgray;
+        border: 1px solid;
+        border-radius: 8px;
+    }
+
+        .card-btn-container button:hover {
+            width: 40px;
+            background-color: lightgray;
+            color: #000;
+            border: 1px solid;
+            border-radius: 8px;
+        }
+
+
+.price-card {
+    width: 100%;
+    background-color: rgba(0,0,0,0.7);
+    border: none;
+    color: lightgray;
+    padding: .5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+    .price-card:hover {
+        background-color: lightgray;
+        border: none;
+        color: rgba(0,0,0,0.7);
+    }
+
+    .price-card svg {
+        margin-left: 10px;
+    }
+
+/*
+    Index Movie Detail Modal
+    _________________________________________
+*/
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 800px;
+        margin: 10rem auto;
+    }
+}
+
+.modal-content {
+    border-radius: 21px;
+    background-image: url("../images/20707399.jpg");
+    background-size: contain;
+    border: 0.5px solid #fff;
+    position: relative;
+}
+
+.blur-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 21px;
+    background-color: rgba(0,0,0,0.7);
+}
+
+#img-container {
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    #img-container img {
+        width: 200px;
+        border-radius: 5px;
+        border: 1px solid #fff;
+    }
+
+#details-container {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    width: 65%;
+    padding-left: 3rem;
+    color: white;
+}
+
+.modal-header, .modal-footer {
+    border: none;
+}
+
+.modal-header, .modal-body {
+    z-index: 1;
+}
+
+.close {
+    color: #fff;
+}
+
+.movie-title {
+    font-size: 25px;
+    letter-spacing: 1.8px;
+    word-spacing: 6px;
+}
+
+#details, #writers, #directors, #actors, #summary {
+    color: gray;
+    font-size: 15px;
+}
+
+/* Search All Movies
+   -----------------------------------------------
+*/
+#searchContainer {
+    padding-bottom: 1rem
+}
+
+    #searchContainer div {
+        width: 40%;
+    }
+
+#SearchAllMovies {
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    padding: 5px 25px;
+    width: 76%;
+    margin-left: 20px;
+    border-radius: 20px;
+}
+
+.input-shadow-box {
+    -webkit-box-shadow: 7px 8px 14px -1px rgba(0,0,0,0.75) !important;
+    -moz-box-shadow: 7px 8px 14px -1px rgba(0,0,0,0.75) !important;
+    box-shadow: 7px 8px 14px -1px rgba(0,0,0,0.75) !important;
+}
+
+.label-font-size {
+    font-size: 1.2rem !important;
+}
+
+
+*:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/*________details page css________*/
+.details {
+    width: 50%;
+    padding: 30px 0px 0px 30px;
+}
+
+    .details h6 {
+        font-size: 20px;
+        font-style: italic;
+    }
+
+    .details span {
+        color: gray;
+    }
+
+.img-details {
+    width: 25rem;
+    border-radius: 5px;
+    -webkit-box-shadow: 7px 8px 14px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 8px 14px -1px rgba(0,0,0,0.75);
+    box-shadow: 7px 8px 14px -1px rgba(0,0,0,0.75);
+}
+
+.movie-title-details {
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.btns-detailspage {
+    width: 35%;
+}

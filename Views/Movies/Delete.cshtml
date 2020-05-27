@@ -1,0 +1,52 @@
+﻿@model MovieWeb.Models.MovieViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<div class="container">
+
+    <div class="row">
+        <img src="~/images/@Html.DisplayFor(model => model.MoviePosterURL)" class="img-details" />
+        <div class="details ml-5">
+            <div class="movie-title movie-title-details pb-2">@Html.DisplayFor(model => model.MovieTitle)</div>
+            <h6>Release Date:       <span>@Html.DisplayFor(model => model.ReleaseDate)  </span></h6>
+            <h6>Runtime:            <span>@Html.DisplayFor(model => model.Runtime)      </span></h6>
+            <h6>Movie Rating:       <span>@Html.DisplayFor(model => model.MovieRating)  </span></h6>
+            <h6>
+                Genres:         @foreach (var item in Model.SelectedGenres)
+                {
+                    <span>@item </span>;
+                }
+            </h6>
+            <h6>
+                Directed by:    @foreach (var item in Model.SelectedDirectors)
+                {
+                    <span>@item, </span>;
+                }
+            </h6>
+            <h6>
+                Writers:        @foreach (var item in Model.SelectedWriters)
+                {
+                    <span>@item, </span>;
+                }
+            </h6>
+            <h6>
+                Actors:        @foreach (var item in Model.SelectedActors)
+                {
+                    <span>@item, </span>;
+                }
+            </h6>
+            <h6>Summary:            <span>@Html.DisplayFor(model => model.Summary)      </span></h6>
+            <h6>Movie Price:        <span>@Html.DisplayFor(model => model.MoviePrice)   </span></h6>
+            <a href="@Model.IMDBLink" class="imdb-logo" target="_blank">IMDb</a>
+        </div>
+    </div>
+
+    <div class="mt-4 btns-detailspage">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="ID" />
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-action="Index">Back to List</a>
+        </form>
+    </div>
+</div>
